@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
             ]);
             $objProduct->save();
             $objProduct->addMedia(public_path('img/product.jpg'))->preservingOriginal()->toMediaCollection('img');
-            for ($i=0; $i<mt_rand(1, 5); $i++){
+            for ($j=0; $j<mt_rand(1, 5); $j++){
                 $objProduct->addMedia(public_path('img/other.jpg'))->preservingOriginal()->toMediaCollection('other_images');
             }
 
