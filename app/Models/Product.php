@@ -11,6 +11,10 @@ class Product extends Model implements HasMedia
 
     protected $table = 'product';
 
-//    protected $fillable = ['name', 'amount', 'price', 'created_at', 'updated_at'];
     protected $fillable = ['name', 'amount', 'price'];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'rel_product_to_category');
+    }
 }

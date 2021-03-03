@@ -10,9 +10,9 @@ class RelProductToCategory extends Migration
     {
         Schema::create('rel_product_to_category', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->integer('product_id');
             $table->integer('category_id');
+            $table->timestamps();
         });
     }
 
