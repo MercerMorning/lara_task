@@ -9,6 +9,7 @@ class OrderController extends Controller
 {
     public function create(Product $product)
     {
-        var_dump($product->name);
+        session()->push('orders', $product);
+        return redirect()->route('basket.index');
     }
 }
