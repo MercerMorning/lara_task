@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\FrontController@home')->name('home');
 Route::get('/product/{product}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 Route::get('/category/{category}', 'App\Http\Controllers\CategoryController@show')->name('category.show');
+Route::put('/order/{product}', 'App\Http\Controllers\OrderController@create')->name('order.create')->middleware('hasAmount');
 //Route::get('/', 'FrontController@home');

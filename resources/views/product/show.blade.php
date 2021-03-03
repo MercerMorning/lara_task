@@ -8,6 +8,16 @@
 <br>
 остаток: {{ $product->amount }}
 <br>
+@if($product->amount > 0)
+    <form
+          action="{{ route('order.create', $product) }}"
+          method="POST">
+        {{ csrf_field() }}
+        {{ method_field('PUT') }}
+        <input type="hidden" name="productId" value="{{ $product->id }}">
+        <input type="submit" value="заказать!">
+    </form>
+@endif
 <ul>
     @foreach($product->categories as $category)
         <li>{{ $category->name }}</li>
