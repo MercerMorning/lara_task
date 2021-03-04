@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+Route::namespace('App\Http\Controllers')
+    ->group(function () {
+        Route::get('/', 'FrontController@home')->name('home');
+        Route::get('/product/{product}', 'ProductController@show')->name('product.show');
+        Route::get('/category/{category}', 'CategoryController@show')->name('category.show');
+        Route::get('/basket', 'BasketController@index')->name('basket.index');
+        Route::put('/order/{product}', 'OrderController@create')->name('order.create')->middleware('hasAmount');
+    });
 
-Route::get('/', 'App\Http\Controllers\FrontController@home')->name('home');
-Route::get('/product/{product}', 'App\Http\Controllers\ProductController@show')->name('product.show');
-Route::get('/category/{category}', 'App\Http\Controllers\CategoryController@show')->name('category.show');
-Route::get('/basket', 'App\Http\Controllers\BasketController@index')->name('basket.index');
-Route::put('/order/{product}', 'App\Http\Controllers\OrderController@create')->name('order.create')->middleware('hasAmount');
 //Route::get('/', 'FrontController@home');
